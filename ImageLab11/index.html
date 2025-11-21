@@ -1,15 +1,52 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="https://aframe.io/releases/1.7.1/aframe.min.js"> </script>
+    <script src="https://aframe.io/releases/1.7.1/aframe.min.js"></script>
   </head>
   <body>
     <a-scene>
-      <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
-      <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
-      <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
-      <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
-      <a-sky color="#ECECEC"></a-sky>
+      
+      <a-assets>
+        <a-asset-item id="ghost" src="assets/uploads-files-3762610-Bat.obj"></a-asset-item>
+        <a-asset-item id="bat" src="assets/uploads-files-5315176-ma.obj"></a-asset-item>
+
+        <img id="cloth" src="assets/rue-s-XivbqAPEoJg-unsplash.jpg">
+        <img id="fur" src="assets/photo-fur-texture-pattern.jpg">
+        <img id="sky1" src="assets/foggy-forest-landscape.png">
+
+        <audio id="river" src="river.mp3" preload="auto"></audio>
+      </a-assets>
+
+      <a-light type="ambient" color="#445451"></a-light>
+
+      <a-sky src="#sky1" radius="50"></a-sky>
+
+      <!-- GHOST OBJ MODEL -->
+      <a-entity
+        obj-model="obj: #ghost"
+        position="0 1 -10"
+        scale="0.15 0.15 0.15"
+        material="src: #cloth">
+      </a-entity>
+
+      <!-- BAT OBJ MODEL -->
+      <a-entity
+        obj-model="obj: #bat"
+        position="-1.595 3 -6.106"
+        rotation="0 0 180"
+        scale="0.4 0.4 0.4"
+        material="src: #fur"
+        animation="property: position; 
+                   to: -1.595 2.634 -6.106; 
+                   dir: alternate;
+                   dur: 2000;
+                   easing: easeInOutSine;
+                   loop: true">
+      </a-entity>
+
+      <!-- SOUND -->
+      <a-entity sound="src: #river; autoplay: true; loop: true"></a-entity>
+
     </a-scene>
   </body>
 </html>
